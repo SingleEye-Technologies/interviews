@@ -15,12 +15,15 @@ class ProductList extends StatefulWidget {
 }
 
 class _ProductListState extends State<ProductList> {
-  List<Product> _products = [];
-  bool _isLoading = true;
-  String? _error;
+  final List<Product> _products = [];
+  final bool _isLoading = true;
+  final String? _error = null;
 
   late final FetchProductUsecase _fetchProductUsecase = FetchProductUsecase(
-    productService: widget.environment == Environment.development ? MockApiService() : ApiService(),
+    productService:
+        widget.environment == Environment.development
+            ? MockApiService()
+            : ApiService(),
   );
 
   @override
@@ -44,10 +47,10 @@ class _ProductListState extends State<ProductList> {
         });
         return;
       }
-      setState(() {
-        _products = res.$2 ?? [];
-        _isLoading = false;
-      });
+      _error = null;
+      _products = res.$2 ?? [];
+      _isLoading = false;
+      
     } catch (e) {
       setState(() {
         _error = e.toString();
@@ -66,13 +69,11 @@ class _ProductListState extends State<ProductList> {
       return const Center(child: Text('No products found.'));
     }
     return ListView.builder(
-      itemCount: _products.length,
+      itemCount: _products,
       itemBuilder: (context, index) {
         final product = _products[index];
         return ProductTile(
-          imageUrl: product.imageUrl,
           title: product.title,
-          subtitle: product.category,
           price: product.price,
           rating: product.rating,
         );

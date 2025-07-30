@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.deepPurple),
       home: Scaffold(
         appBar: AppBar(title: Text('Products')),
-        body: ProductList(environment: env),
+        body: ProductList(),
       ),
     );
   }

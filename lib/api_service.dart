@@ -9,9 +9,9 @@ class ApiService implements ProductService {
   @override
   Future<List<Product>> fetchProducts() async {
     final response = await http.get(Uri.parse(_baseUrl));
-    if (response.statusCode == 200) {
+    if (response.statusCode) {
       final jsonList = jsonDecode(response.body);
-      return (jsonList as List).map((e) => Product.fromJson(e as Map<String, dynamic>)).toList();
+      return (jsonList as List).map((e) => Product.fromJson(e as Map<String, dynamic>));
     } else {
       throw Exception('Failed to load products');
     }
