@@ -59,6 +59,7 @@ By the end of your task, we expect:
 
 * The app to correctly display the products from the Remote server API.
 * No crashes or obvious bugs.
+* Show good knowledge of Dart 3.0 release features
 * Functional and visually consistent product tiles.
 
 ---
@@ -68,7 +69,7 @@ By the end of the task, we expect:
 
  A clean, well-structured project with your preferred architecture.
 
- Fixed data-fetching issues (crashes, missing fields, etc.).
+ Bug fixes & data-fetching is possible (crashes, missing fields, etc.).
 
  No changes to UI visuals unless needed for data display.
 

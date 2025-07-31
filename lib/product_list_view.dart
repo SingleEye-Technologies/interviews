@@ -8,8 +8,8 @@ import 'product_model.dart';
 import 'api_service.dart';
 
 class ProductList extends StatefulWidget {
-  const ProductList({super.key, this.environment});
-  final Environment? environment;
+  const ProductList({super.key, required this.environment});
+  final Environment environment;
   @override
   _ProductListState createState() => _ProductListState();
 }
@@ -22,14 +22,14 @@ class _ProductListState extends State<ProductList> {
   late final FetchProductUsecase _fetchProductUsecase = FetchProductUsecase(
     productService:
         widget.environment == Environment.development
-            ? MockApiService()
-            : ApiService(),
+            ? MockApiService
+            : ApiService,
   );
 
   @override
   void initState() {
     super.initState();
-    _loadProducts();
+    _loadProducts;
   }
 
   void _loadProducts() async {
